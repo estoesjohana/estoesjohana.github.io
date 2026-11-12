@@ -188,11 +188,13 @@
 <script>
 (function(){
   var b=document.getElementById('btnMusica'), a=document.getElementById('bgm'), on=false;
-  b.addEventListener('click', function(){
-    if(on){ a.pause(); b.textContent='🎵 Escuchar'; }
-    else { a.play(); b.textContent='⏸ Pausar'; }
-    on=!on;
+  function start(){ if(!on){ a.play(); b.textContent='⏸ Pausar'; on=true; } }
+  b.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(on){ a.pause(); b.textContent='🎵 Escuchar'; on=false; }
+    else { start(); }
   });
+  document.addEventListener('pointerdown', start, { once:true });
 })();
 </script>
 </body>
