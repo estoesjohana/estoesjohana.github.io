@@ -183,5 +183,17 @@
   </div>
 </section>
 
+<button id="btnMusica" aria-label="Escuchar la música del evento" style="position:fixed; right:16px; bottom:16px; z-index:999; background:var(--vino); color:var(--crema); border:2px solid var(--crema); border-radius:999px; padding:12px 20px; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; cursor:pointer; box-shadow:0 4px 14px rgba(62,1,17,.35);">🎵 Escuchar</button>
+<audio id="bgm" src="musica.mp3" loop preload="none"></audio>
+<script>
+(function(){
+  var b=document.getElementById('btnMusica'), a=document.getElementById('bgm'), on=false;
+  b.addEventListener('click', function(){
+    if(on){ a.pause(); b.textContent='🎵 Escuchar'; }
+    else { a.play(); b.textContent='⏸ Pausar'; }
+    on=!on;
+  });
+})();
+</script>
 </body>
 </html>
